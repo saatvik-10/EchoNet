@@ -1,9 +1,11 @@
 import { Hono } from 'hono';
+import { AuthController } from '../controllers/auth.controller';
 
 const authRouter = new Hono();
+const authController = new AuthController();
 
-authRouter.get('/login', async (res) => res.text('Signed In'));
-authRouter.get('/signup', async (res) => res.text('Signed Up'));
-authRouter.get('/logout', async (res) => res.text('Logged Out'));
+authRouter.post('/signin', authController.signin);
+authRouter.post('/signup', authController.signup);
+authRouter.post('/signout', authController.signout);
 
 export default authRouter;
