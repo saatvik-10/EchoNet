@@ -1,11 +1,14 @@
-import express from "express";
+import { Hono } from 'hono';
+import { serve } from '@hono/node-server';
+import authRoutes from './routes/auth.route';
+import msgRoutes from './routes/msg.route';
 
-const app = express();
+const app = new Hono();
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+app.route('/api/auth', authRoutes); //for signin and signup
+app.route('/api/messages', msgRoutes); //for posting and getting msg
 
-app.listen(5000, () => {
-  console.log("Server is running on port 5000");
+serve({
+  fetch: app.fetch,
+  port: 5000,
 });
