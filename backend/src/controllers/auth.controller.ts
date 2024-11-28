@@ -1,6 +1,7 @@
 import { Context } from 'hono';
 import prisma from '../db/prisma';
 import bcryptjs from 'bcryptjs';
+import generateToken from '../utils/generateToken';
 
 export class AuthController {
   async signup(ctx: Context): Promise<Response> {
@@ -44,7 +45,7 @@ export class AuthController {
       });
 
       if (newUser) {
-        //generate new token
+        generateToken(newUser.id, ctx);
 
         return ctx.json(
           {
