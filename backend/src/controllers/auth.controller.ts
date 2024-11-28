@@ -2,6 +2,7 @@ import { Context } from 'hono';
 import prisma from '../db/prisma';
 import bcryptjs from 'bcryptjs';
 import generateToken from '../utils/generateToken';
+import { deleteCookie } from 'hono/cookie';
 
 export class Authentication {
   async signup(ctx: Context): Promise<Response> {
@@ -103,6 +104,12 @@ export class Authentication {
   }
 
   async signout(ctx: Context): Promise<Response> {
-    return ctx.text('Signed Out');
+    try {
+      deleteCookie(ctx, 'jwt');
+      return ctx.json({ message: 'Signed Out' }, 200);
+    } catch (err) {
+      console.log(err);
+      return ctx.json({ error: 'Server Error' }, 500);
+    }
   }
 }
