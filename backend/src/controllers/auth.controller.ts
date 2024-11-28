@@ -88,6 +88,8 @@ export class Authentication {
         return ctx.json({ error: 'Invalid Credentials' }, 400);
       }
 
+      generateToken(user.id, ctx);
+
       return ctx.json(
         {
           id: user.id,
@@ -107,6 +109,35 @@ export class Authentication {
     try {
       deleteCookie(ctx, 'jwt');
       return ctx.json({ message: 'Signed Out' }, 200);
+    } catch (err) {
+      console.log(err);
+      return ctx.json({ error: 'Server Error' }, 500);
+    }
+  }
+
+  async getMe(ctx: Context): Promise<Response> {
+    try {
+      const id = ctx.get('userId');
+
+      const user = await prisma.user.findUnique({
+        where: {
+          id: id,
+        },
+      });
+
+      if (!user) {
+        return ctx.json({ error: 'User not found' }, 404);
+      }
+
+      return ctx.json(
+        {
+          id: user.id,
+          fullName: user.fullName,
+          username: user.username,
+          profilePic: user.profilePic,
+        },
+        200
+      );
     } catch (err) {
       console.log(err);
       return ctx.json({ error: 'Server Error' }, 500);
