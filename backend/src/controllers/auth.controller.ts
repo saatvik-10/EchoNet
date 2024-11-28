@@ -64,7 +64,42 @@ export class Authentication {
   }
 
   async signin(ctx: Context): Promise<Response> {
-    return ctx.text('Signed In');
+    try {
+      const { username, password } = await ctx.req.json();
+
+      if (!username || !password) {
+        return ctx.json({ error: 'Please fill in all the fields' }, 400);
+      }
+
+      const user = await prisma.user.findUnique({
+        where: {
+          username,
+        },
+      });
+
+      if (!user) {
+        return ctx.json({ error: 'Invalid Credentials' }, 400);
+      }
+
+      const isPswdCorrect = await bcryptjs.compare(password, user.password);
+
+      if (!isPswdCorrect) {
+        return ctx.json({ error: 'Invalid Credentials' }, 400);
+      }
+
+      return ctx.json(
+        {
+          id: user.id,
+          fullName: user.fullName,
+          username: user.username,
+          profilePic: user.profilePic,
+        },
+        200
+      );
+    } catch (err) {
+      console.log(err);
+      return ctx.json({ error: 'Server Error' }, 500);
+    }
   }
 
   async signout(ctx: Context): Promise<Response> {
