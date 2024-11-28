@@ -3,10 +3,9 @@ import prisma from '../db/prisma';
 import bcryptjs from 'bcryptjs';
 import generateToken from '../utils/generateToken';
 
-export class AuthController {
+export class Authentication {
   async signup(ctx: Context): Promise<Response> {
     try {
-      // return ctx.text('Signed Up');
       const { fullName, username, password, confirmPassword, gender } =
         await ctx.req.json();
 
@@ -31,8 +30,8 @@ export class AuthController {
       const salt = await bcryptjs.genSalt(10);
       const hashedPassword = await bcryptjs.hash(password, salt);
 
-      const boyProfilePic = `https://avatar-placeholder.iran.liara.run/public/boy?{username=${username}}`;
-      const girlProfilePic = `https://avatar-placeholder.iran.liara.run/public/girl?{username=${username}}`;
+      const boyProfilePic = `https://avatar-placeholder.iran.liara.run/public/boy?username=${username}`;
+      const girlProfilePic = `https://avatar-placeholder.iran.liara.run/public/girl?username=${username}`;
 
       const newUser = await prisma.user.create({
         data: {
@@ -59,6 +58,7 @@ export class AuthController {
         return ctx.json({ error: 'Invalid Data' }, 400);
       }
     } catch (err) {
+      console.log(err);
       return ctx.json({ error: 'Server Error' }, 500);
     }
   }
