@@ -19,7 +19,7 @@ const generateToken = async (userId: string, ctx: Context) => {
     sameSite: 'strict',
   });
 
-  console.log(ctx.res.headers);
+  // console.log(ctx.res.headers);
   return token;
 };
 export default generateToken;
