@@ -93,4 +93,27 @@ export class Message {
       return ctx.json({ err: 'Server Error' }, 500);
     }
   }
+  async getConversations(ctx: Context): Promise<Response> {
+    try {
+      const authUserId = ctx.get('userId');
+
+      const users = await prisma.user.findMany({
+        where: {
+          id: {
+            not: authUserId, //want to see users u are chatting with and not yourself
+          },
+        },
+        select: {
+          id: true,
+          fullName: true,
+          profilePic: true,
+        },
+      });
+
+      return ctx.json(users, 200);
+    } catch (err) {
+      console.log(err);
+      return ctx.json({ err: 'Server Error' }, 500);
+    }
+  }
 }
