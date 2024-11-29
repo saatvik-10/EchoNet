@@ -62,4 +62,35 @@ export class Message {
       return ctx.json({ err: 'Server Error' }, 500);
     }
   }
+
+  async getMsg(ctx: Context): Promise<Response> {
+    try {
+      const { id: userToChatId } = ctx.req.param();
+      const senderId = ctx.get('userId');
+
+      const conversation = await prisma.conversation.findFirst({
+        where: {
+          participantsIds: {
+            hasEvery: [senderId, userToChatId],
+          },
+        },
+        include: {
+          messages: {
+            orderBy: {
+              createdAt: 'asc',
+            },
+          },
+        },
+      });
+
+      if (!conversation) {
+        return ctx.json({ err: 'No conversation found' }, 404);
+      }
+
+      return ctx.json(conversation.messages, 200);
+    } catch (err) {
+      console.log(err);
+      return ctx.json({ err: 'Server Error' }, 500);
+    }
+  }
 }
