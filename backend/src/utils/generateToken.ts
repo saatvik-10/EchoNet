@@ -14,10 +14,12 @@ const generateToken = async (userId: string, ctx: Context) => {
 
   setCookie(ctx, 'jwt', token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV !== 'deployment',
+    secure: process.env.NODE_ENV === 'production',
     maxAge: 15 * 24 * 60 * 60,
     sameSite: 'strict',
   });
+
+  console.log(ctx.res.headers);
   return token;
 };
 export default generateToken;

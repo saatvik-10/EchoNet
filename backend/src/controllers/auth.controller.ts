@@ -45,7 +45,7 @@ export class Authentication {
       });
 
       if (newUser) {
-        generateToken(newUser.id, ctx);
+        await generateToken(newUser.id, ctx);
 
         return ctx.json(
           {
@@ -88,7 +88,7 @@ export class Authentication {
         return ctx.json({ error: 'Invalid Credentials' }, 400);
       }
 
-      generateToken(user.id, ctx);
+      await generateToken(user.id, ctx);
 
       return ctx.json(
         {
