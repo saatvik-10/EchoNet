@@ -27,6 +27,7 @@ export const sendMsg = async (ctx: Context): Promise<Response> => {
       });
     }
 
+    //saves the new msg
     const newMsg = await prisma.message.create({
       data: {
         senderId,
@@ -35,13 +36,20 @@ export const sendMsg = async (ctx: Context): Promise<Response> => {
       },
     });
 
+    //update conversation with the new msg
     if (newMsg) {
       conversation = await prisma.conversation.update({
         where: {
           id: conversation.id,
         },
         data: {
-          id: newMsg.id,
+          messages: {
+            connect: {
+              //connect is a clean way to handle relationships between tables.
+              //here it links the newMsg (Message table) to the conversation (Conversation table).
+              id: newMsg.id,
+            },
+          },
         },
       });
     }
