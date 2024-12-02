@@ -46,7 +46,7 @@ export class Message {
             messages: {
               connect: {
                 //connect is a clean way to handle relationships between tables.
-                //here it links the newMsg (Message table) to the conversation (Conversation table).
+                //here it links the newMsg (Message Table) to the conversation (Conversation Table).
                 id: newMsg.id,
               },
             },
