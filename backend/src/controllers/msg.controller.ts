@@ -10,7 +10,7 @@ export class Message {
       //check if conversation exists
       let conversation = await prisma.conversation.findFirst({
         where: {
-          participantsIds: {
+          participantIds: {
             hasEvery: [senderId, receiverId],
           },
         },
@@ -20,7 +20,7 @@ export class Message {
       if (!conversation) {
         conversation = await prisma.conversation.create({
           data: {
-            participantsIds: {
+            participantIds: {
               set: [senderId, receiverId],
             },
           },
@@ -70,7 +70,7 @@ export class Message {
 
       const conversation = await prisma.conversation.findFirst({
         where: {
-          participantsIds: {
+          participantIds: {
             hasEvery: [senderId, userToChatId],
           },
         },
@@ -109,7 +109,6 @@ export class Message {
           profilePic: true,
         },
       });
-
       return ctx.json(users, 200);
     } catch (err) {
       console.log(err);

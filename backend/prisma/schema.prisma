@@ -25,7 +25,7 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  conversationIds String[]
+  conversationsIds String[]
   conversations Conversation[]
 
   messages Message[]
@@ -36,7 +36,7 @@ model Conversation {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  participantsIds String[]
+  participantIds String[]
   participants User[]
 
   messsageIds String[]
