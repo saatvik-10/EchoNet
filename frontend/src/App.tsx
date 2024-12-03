@@ -1,9 +1,17 @@
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
+
 function App() {
   return (
-    <>
-      <h1 className="font-bold text-red-500">Hello World</h1>
-      <button className="btn btn-primary">HELLO</button>
-    </>
+    <div className="flex h-screen items-center justify-center p-4">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/" element={<SignUp />} />
+        <Route path="/" element={<SignIn />} />
+      </Routes>
+    </div>
   );
 }
 
