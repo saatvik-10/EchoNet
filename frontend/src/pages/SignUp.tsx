@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import GenderCheckbox from "../components/GenderCheckbox";
 
 const SignUp = () => {
@@ -55,12 +56,12 @@ const SignUp = () => {
 
           <GenderCheckbox />
 
-          <a
+          <Link
             className="mt-2 inline-block text-sm text-white hover:text-blue-600 hover:underline"
-            href="#"
+            to="/signin"
           >
             Already have an account?
-          </a>
+          </Link>
 
           <div>
             <button className="btn btn-sm btn-block mt-2 border border-slate-700">
