@@ -25,10 +25,6 @@ const AuthContext = createContext<{
   isLoading: true,
 });
 
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
-
 export const AuthContextProvider = ({
   children,
 }: {
@@ -67,4 +63,8 @@ export const AuthContextProvider = ({
       {children}
     </AuthContext.Provider>
   );
+};
+
+export const useAuth = () => {
+  return useContext(AuthContext);
 };
