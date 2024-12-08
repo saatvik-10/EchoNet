@@ -8,8 +8,8 @@ function App() {
     <div className="flex h-screen items-center justify-center p-4">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/" element={<SignUp />} />
-        <Route path="/" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} />
       </Routes>
     </div>
   );

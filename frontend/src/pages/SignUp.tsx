@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import GenderCheckbox from "../components/GenderCheckbox";
 
 const SignUp = () => {
@@ -6,7 +5,7 @@ const SignUp = () => {
     <div className="mx-auto flex min-w-96 flex-col items-center justify-center">
       <div className="w-full rounded-lg bg-gray-400 bg-opacity-0 bg-clip-padding p-6 shadow-md backdrop-blur-lg backdrop-filter">
         <h1 className="text-center text-3xl font-semibold text-gray-300">
-          Sign Up <span className="text-blue-500"> ChatApp</span>
+          Sign Up <span className="text-blue-500"> EchoNet</span>
         </h1>
 
         <form>
@@ -56,15 +55,15 @@ const SignUp = () => {
 
           <GenderCheckbox />
 
-          <Link
-            to={"/login"}
+          <a
             className="mt-2 inline-block text-sm text-white hover:text-blue-600 hover:underline"
+            href="#"
           >
             Already have an account?
-          </Link>
+          </a>
 
           <div>
-            <button className="btn btn-block btn-sm mt-2 border border-slate-700">
+            <button className="btn btn-sm btn-block mt-2 border border-slate-700">
               Sign Up
             </button>
           </div>
