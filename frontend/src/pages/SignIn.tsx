@@ -4,7 +4,7 @@ const SignIn = () => {
       <div className="w-full rounded-lg bg-gray-400 bg-opacity-0 bg-clip-padding p-6 shadow-md backdrop-blur-lg backdrop-filter">
         <h1 className="text-center text-3xl font-semibold text-gray-300">
           Login
-          <span className="text-blue-500"> EcbhoNet</span>
+          <span className="text-blue-500"> EchoNet</span>
         </h1>
 
         <form>
