@@ -1,4 +1,4 @@
-import { IoSearchSharp } from "react-icons/io5";
+import { LuSearch } from "react-icons/lu";
 
 const SearchInput = () => {
   return (
@@ -9,7 +9,7 @@ const SearchInput = () => {
         className="input input-bordered rounded-full"
       />
       <button type="submit" className="btn btn-circle bg-sky-500 text-white">
-        <IoSearchSharp className="h-6 w-6 outline-none" />
+        <LuSearch className="h-6 w-6 outline-none" />
       </button>
     </form>
   );
