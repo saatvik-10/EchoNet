@@ -7,6 +7,7 @@ const useSignUp = () => {
   const { setAuthUser } = useAuth();
 
   const signup = async (input: SignupInput) => {
+    setLoading(true);
     try {
       const res = await fetch("/api/auth/signup", {
         method: "POST",
