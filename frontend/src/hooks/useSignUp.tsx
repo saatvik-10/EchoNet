@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { SignupInput } from "../types/user";
+import {toast} from "react-hot-toast";
 
 const useSignUp = () => {
   const [loading, setLoading] = useState(false);
@@ -20,7 +21,7 @@ const useSignUp = () => {
       if (!res.ok) throw new Error(data.error);
       setAuthUser(data.user);
     } catch (err: any) {
-      console.log(err.message);
+      toast.error(err.message);
     } finally {
       setLoading(false);
     }
