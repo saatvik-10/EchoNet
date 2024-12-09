@@ -6,14 +6,7 @@ import {
   useEffect,
   useState,
 } from "react";
-
-type AuthUserType = {
-  id: string;
-  fullName: string;
-  email: string;
-  profilePic: string;
-  gender: string;
-};
+import { AuthUserType } from "../types/user";
 
 const AuthContext = createContext<{
   authUser: AuthUserType | null;
