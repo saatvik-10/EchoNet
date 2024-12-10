@@ -11,7 +11,7 @@ export class Authentication {
         await ctx.req.json();
 
       if (!fullName || !username || !password || !confirmPassword || !gender) {
-        return ctx.json({ error: 'Please fill in all fields' }, 400);
+        return ctx.json({ message: 'Please fill in all fields' }, 400);
       }
 
       if (password !== confirmPassword) {
