@@ -13,3 +13,8 @@ export type AuthUserType = {
   profilePic: string;
   gender: string;
 };
+
+export type SignInInput = {
+  username: string;
+  password: string;
+};

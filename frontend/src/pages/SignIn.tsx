@@ -1,10 +1,19 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import useSignIn from "../hooks/useSignIn";
 
 const SignIn = () => {
   const [input, setInput] = useState({
     username: "",
     password: "",
   });
+
+  const { loading, signin } = useSignIn();
+
+  const handleSignIn = (e: React.FormEvent) => {
+    e.preventDefault();
+    signin(input);
+  };
 
   return (
     <div className="mx-auto flex min-w-96 flex-col items-center justify-center">
@@ -14,7 +23,7 @@ const SignIn = () => {
           <span className="text-blue-500"> EchoNet</span>
         </h1>
 
-        <form>
+        <form onSubmit={handleSignIn}>
           <div>
             <label className="label p-2">
               <span className="label-text text-base">Username</span>
@@ -48,7 +57,9 @@ const SignIn = () => {
           </Link>
 
           <div>
-            <button className="btn btn-sm btn-block mt-2">Login</button>
+            <button className="btn btn-sm btn-block mt-2">
+              {loading ? "Loading..." : "Sign In"}
+            </button>
           </div>
         </form>
       </div>

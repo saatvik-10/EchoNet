@@ -1,22 +1,23 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { SignupInput } from "../types/user";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
+import { SignInInput } from "../types/user";
 
-const useSignUp = () => {
+const useSignIn = () => {
   const [loading, setLoading] = useState(false);
   const { setAuthUser } = useAuth();
 
-  const signup = async (input: SignupInput) => {
+  const signin = async (input: SignInInput) => {
     setLoading(true);
     try {
-      const res = await fetch("/api/auth/signup", {
+      const res = await fetch("/api/auth/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(input),
       });
+
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
       setAuthUser(data);
@@ -26,7 +27,7 @@ const useSignUp = () => {
       setLoading(false);
     }
   };
-  return { signup, loading };
+  return { signin, loading };
 };
 
-export default useSignUp;
+export default useSignIn;

@@ -1,14 +1,14 @@
 import { LuLogOut } from "react-icons/lu";
-import useLogout from "../../hooks/useLogout";
+import useSignOut from "../../hooks/useSignOut";
 
 const LogoutButton = () => {
-  const { logout } = useLogout();
+  const { signout } = useSignOut();
 
   return (
     <div className="mt-auto">
       <LuLogOut
         className="h-6 w-6 cursor-pointer text-white"
-        onClick={logout}
+        onClick={signout}
       />
     </div>
   );

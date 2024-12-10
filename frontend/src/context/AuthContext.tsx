@@ -37,7 +37,7 @@ export const AuthContextProvider = ({
         }
         setAuthUser(data);
       } catch (err: any) {
-        toast.error(err);
+        toast.error(err.message);
       } finally {
         setIsLoading(false);
       }
