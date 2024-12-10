@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 
 const SignIn = () => {
+  const [input, setInput] = useState({
+    username: "",
+    password: "",
+  });
+
   return (
     <div className="mx-auto flex min-w-96 flex-col items-center justify-center">
       <div className="w-full rounded-lg bg-gray-400 bg-opacity-0 bg-clip-padding p-6 shadow-md backdrop-blur-lg backdrop-filter">
@@ -18,6 +23,8 @@ const SignIn = () => {
               type="text"
               placeholder="Enter username"
               className="input input-bordered h-10 w-full"
+              value={input.username}
+              onChange={(e) => setInput({ ...input, username: e.target.value })}
             />
           </div>
 
@@ -29,6 +36,8 @@ const SignIn = () => {
               type="password"
               placeholder="Enter Password"
               className="input input-bordered h-10 w-full"
+              value={input.password}
+              onChange={(e) => setInput({ ...input, password: e.target.value })}
             />
           </div>
           <Link
