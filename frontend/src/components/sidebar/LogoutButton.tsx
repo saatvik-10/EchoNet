@@ -1,7 +1,7 @@
 import { LuLogOut } from "react-icons/lu";
 import useSignOut from "../../hooks/useSignOut";
 
-const LogoutButton = () => {
+const SignOutBtn = () => {
   const { signout } = useSignOut();
 
   return (
@@ -13,4 +13,4 @@ const LogoutButton = () => {
     </div>
   );
 };
-export default LogoutButton;
+export default SignOutBtn;

@@ -9,7 +9,7 @@ const useSignOut = () => {
   const signout = async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/auth/logout", {
+      const res = await fetch("/api/auth/signout", {
         method: "POST",
       });
       const data = await res.json();
