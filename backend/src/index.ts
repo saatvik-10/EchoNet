@@ -6,8 +6,6 @@ import msgRoutes from './routes/msg.route';
 
 const app = new Hono();
 
-// app.use('*', json())
-
 app.route('/api/auth', authRoutes); //for signin and signup
 app.route('/api/messages', msgRoutes); //for posting and getting msg
 
