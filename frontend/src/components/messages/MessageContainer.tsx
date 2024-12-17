@@ -1,4 +1,4 @@
-import userConversation from "../../hooks/zustand/userConversation";
+import userConversation from "../../hooks/zustand/useConversation";
 import MessageInput from "./MessageInput";
 import Messages from "./Messages";
 import NoChatSelected from "./NoChatSelected";
