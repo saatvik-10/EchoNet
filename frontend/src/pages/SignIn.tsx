@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import useSignIn from "../hooks/useSignIn";
+import useSignIn from "../hooks/auth/useSignIn";
 
 const SignIn = () => {
   const [input, setInput] = useState({

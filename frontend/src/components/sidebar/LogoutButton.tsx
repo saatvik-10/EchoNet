@@ -1,5 +1,5 @@
 import { LuLogOut } from "react-icons/lu";
-import useSignOut from "../../hooks/useSignOut";
+import useSignOut from "../../hooks/auth/useSignOut";
 
 const SignOutBtn = () => {
   const { signout } = useSignOut();
