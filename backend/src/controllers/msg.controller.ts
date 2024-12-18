@@ -38,7 +38,7 @@ export class Message {
 
       //update conversation with the new msg
       if (newMsg) {
-        conversation = await prisma.conversation.update({
+        await prisma.conversation.update({
           where: {
             id: conversation.id,
           },

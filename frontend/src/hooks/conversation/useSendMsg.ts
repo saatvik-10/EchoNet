@@ -18,10 +18,11 @@ const useSendMsg = () => {
         body: JSON.stringify({ msg }),
       });
       const data = await res.json();
-      if (data.err) throw new Error(data.err);
+      if (!res.ok) throw new Error(data.err);
       setMessages([...messages, data]);
     } catch (err: any) {
-      toast.error(err);
+      const errMsg = err.message || "An unexpected error occurred";
+      toast.error(errMsg);
     } finally {
       setLoading(false);
     }

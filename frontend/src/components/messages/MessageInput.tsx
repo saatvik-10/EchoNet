@@ -7,7 +7,7 @@ const MessageInput = () => {
 
   const { loading, sendMsg } = useSendMsg();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!msg.trim()) return;
     await sendMsg(msg);
@@ -21,12 +21,14 @@ const MessageInput = () => {
           type="text"
           className="w-full bg-transparent focus:outline-none"
           placeholder="Send a message"
+          value={msg}
+          onChange={(e) => setMsg(e.target.value)}
         />
         <button type="submit">
           {loading ? (
             <span className="loading loading-spinner" />
           ) : (
-            <LuSend className="size-4" />
+            <LuSend className="size-5" />
           )}
         </button>
       </div>

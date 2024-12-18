@@ -1,14 +1,14 @@
 import { create } from "zustand";
 import { ConversationType, MessageType } from "../../types/conversation";
 
-interface UserConversation {
+interface UserConversationProps {
   selectedConversation: ConversationType | null;
   messages: MessageType[];
   setSelectedConversation: (conversation: ConversationType | null) => void;
   setMessages: (messages: MessageType[]) => void;
 }
 
-const useConversation = create<UserConversation>((set) => ({
+const useConversation = create<UserConversationProps>((set) => ({
   selectedConversation: null,
   setSelectedConversation: (conversation) =>
     set({ selectedConversation: conversation }),
