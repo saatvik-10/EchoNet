@@ -1,20 +1,20 @@
-// import { LuSend } from "react-icons/lu";
+import { LuSend } from "react-icons/lu";
 
 const MessageInput = () => {
   return (
     <form className="my-3 px-4">
-      <div className="w-full">
+      <div className="flex items-center justify-between w-full rounded-lg border border-gray-600 bg-gray-700 p-2.5 text-sm text-white">
         <input
           type="text"
-          className="block w-full rounded-lg border border-gray-600 bg-gray-700 p-2.5 text-sm text-white"
+          className="bg-transparent w-full focus:outline-none"
           placeholder="Send a message"
         />
-        {/* <button
+        <button
           type="submit"
-          className="absolute inset-y-0 end-0 flex items-center pe-3"
+          className=""
         >
           <LuSend />
-        </button> */}
+        </button>
       </div>
     </form>
   );

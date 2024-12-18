@@ -1,27 +1,33 @@
-const Message = ({message}:{message?:any}) => {
-	// const { authUser } = useAuth();
+import { useAuth } from "../../context/AuthContext";
+import useConversation from "../../hooks/zustand/useConversation";
+import { MessageType } from "../../types/conversation";
+import { extractTime } from "../../utils/lib/lib";
 
-	const fromMe = message.fromMe;
-	const img = fromMe ?  `https://avatar.iran.liara.run/public/boy?username` :
-	`https://avatar.iran.liara.run/public/girl?username`;
-	const chatClass = fromMe ? "chat-end" : "chat-start";
+const Message = ({ message }: { message: MessageType }) => {
+  const { authUser } = useAuth();
+  const { selectedConversation } = useConversation();
 
-	const bubbleBg = fromMe ? "bg-blue-500" : "";
-	const shakeClass = message.shouldShake ? "shake" : "";
+  const fromMe = message?.senderId == authUser?.id;
+  const img = fromMe ? authUser?.profilePic : selectedConversation?.profilePic;
+  const chatClass = fromMe ? "chat-end" : "chat-start";
 
-	return (
-		<div className={`chat ${chatClass}`}>
-			<div className='hidden md:block chat-image avatar'>
-				<div className='w-6 md:w-10 rounded-full'>
-					<img alt='Tailwind CSS chat bubble component' src={img} />
-				</div>
-			</div>
-			<p className={`chat-bubble text-white ${bubbleBg} ${shakeClass} text-sm md:text-md`}>{message.body}</p>
-			<span className='chat-footer opacity-50 text-xs flex gap-1 items-center text-white'>
-				{'22:58'}
-			</span>
-		</div>
-	);
+  const bubbleBg = fromMe ? "bg-blue-500" : "";
+  //   const shakeClass = message.shouldShake ? "shake" : "";
+
+  return (
+    <div className={`chat ${chatClass}`}>
+      <div className="avatar chat-image hidden md:block">
+        <div className="w-6 rounded-full md:w-10">
+          <img alt="Tailwind CSS chat bubble component" src={img} />
+        </div>
+      </div>
+      <p className={`chat-bubble text-white ${bubbleBg} md:text-md text-sm`}>
+        {message.body}
+      </p>
+      <span className="chat-footer flex items-center gap-1 text-xs text-white opacity-50">
+        {extractTime(message.createdAt)}
+      </span>
+    </div>
+  );
 };
 export default Message;
-

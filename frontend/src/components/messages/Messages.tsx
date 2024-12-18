@@ -1,14 +1,34 @@
+import { useEffect, useState } from "react";
 import useGetMsgs from "../../hooks/conversation/useGetMsgs";
+import MessageSkeleton from "../skeletons/MessageSkeleton";
 import Message from "./Message";
 
 const Messages = () => {
-  const { messages} = useGetMsgs();
+  const { loading, messages } = useGetMsgs();
+  const [showSkeleton, setShowSkeleton] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSkeleton(false);
+    }, 1000); // 1 second delay
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="flex-1 overflow-auto px-4">
-      {messages.map((msg)=>(
-        <Message key={msg.id} message={msg} />
-      ))}
+      {showSkeleton &&
+        loading && [...Array(3).map((_, idx) => <MessageSkeleton key={idx} />)]}
+
+      {!showSkeleton &&
+        !loading &&
+        messages.map((msg) => <Message key={msg.id} message={msg} />)}
+
+      {!showSkeleton && !loading && messages.length === 0 && (
+        <p className="text-center text-white">
+          Send a message to start a conversation...
+        </p>
+      )}
     </div>
   );
 };
