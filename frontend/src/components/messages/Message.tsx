@@ -1,60 +1,24 @@
-// import { useAuthContext } from "../../context/AuthContext";
-// import { extractTime } from "../../utils/extractTime";
-// import useConversation, { MessageType } from "../../zustand/useConversation";
+const Message = ({message}:{message?:any}) => {
+	// const { authUser } = useAuth();
 
-// const Message = ({ message }: { message: MessageType }) => {
-// 	const { authUser } = useAuthContext();
-// 	const { selectedConversation } = useConversation();
+	const fromMe = message.fromMe;
+	const img = fromMe ?  `https://avatar.iran.liara.run/public/boy?username` :
+	`https://avatar.iran.liara.run/public/girl?username`;
+	const chatClass = fromMe ? "chat-end" : "chat-start";
 
-// 	const fromMe = message?.senderId === authUser?.id;
-// 	const img = fromMe ? authUser?.profilePic : selectedConversation?.profilePic;
-// 	const chatClass = fromMe ? "chat-end" : "chat-start";
-
-// 	const bubbleBg = fromMe ? "bg-blue-500" : "";
-// 	const shakeClass = message.shouldShake ? "shake" : "";
-
-// 	return (
-// 		<div className={`chat ${chatClass}`}>
-// 			<div className='hidden md:block chat-image avatar'>
-// 				<div className='w-6 md:w-10 rounded-full'>
-// 					<img alt='Tailwind CSS chat bubble component' src={img} />
-// 				</div>
-// 			</div>
-// 			<p className={`chat-bubble text-white ${bubbleBg} ${shakeClass} text-sm md:text-md`}>{message.body}</p>
-// 			<span className='chat-footer opacity-50 text-xs flex gap-1 items-center text-white'>
-// 				{extractTime(message.createdAt)}
-// 			</span>
-// 		</div>
-// 	);
-// };
-// export default Message;
-
-// import { useAuthContext } from "../../context/AuthContext";
-// import { extractTime } from "../../utils/extractTime";
-// import useConversation, { MessageType } from "../../zustand/useConversation";
-
-const Message = () => {
-	// const { authUser } = useAuthContext();
-	// const { selectedConversation } = useConversation();
-
-	// const fromMe = message?.senderId === authUser?.id;
-	// const img = fromMe ? authUser?.profilePic : selectedConversation?.profilePic;
-	// const chatClass = fromMe ? "chat-end" : "chat-start";
-
-	// const bubbleBg = fromMe ? "bg-blue-500" : "";
-	// const shakeClass = message.shouldShake ? "shake" : "";
+	const bubbleBg = fromMe ? "bg-blue-500" : "";
+	const shakeClass = message.shouldShake ? "shake" : "";
 
 	return (
-		// <div className={`chat ${chatClass}`}>
-		<div>
+		<div className={`chat ${chatClass}`}>
 			<div className='hidden md:block chat-image avatar'>
 				<div className='w-6 md:w-10 rounded-full'>
-					<img alt='Tailwind CSS chat bubble component' src={'img'} />
+					<img alt='Tailwind CSS chat bubble component' src={img} />
 				</div>
 			</div>
-			<p className={`chat-bubble text-white ${'bubbleBg'} ${'shakeClass'} text-sm md:text-md`}>{'message.body'}</p>
+			<p className={`chat-bubble text-white ${bubbleBg} ${shakeClass} text-sm md:text-md`}>{message.body}</p>
 			<span className='chat-footer opacity-50 text-xs flex gap-1 items-center text-white'>
-				{'extractTime(message.createdAt)'}
+				{'22:58'}
 			</span>
 		</div>
 	);

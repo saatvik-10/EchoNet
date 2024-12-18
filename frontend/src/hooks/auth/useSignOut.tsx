@@ -17,6 +17,7 @@ const useSignOut = () => {
         throw new Error(data.message);
       }
       setAuthUser(null);
+      toast.success("Signed out successfully");
     } catch (err: any) {
       toast.error(err.message);
     } finally {

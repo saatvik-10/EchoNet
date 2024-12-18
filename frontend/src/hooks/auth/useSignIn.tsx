@@ -21,6 +21,7 @@ const useSignIn = () => {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
       setAuthUser(data);
+      toast.success("Signed in successfully");
     } catch (err: any) {
       toast.error(err.message);
     } finally {
