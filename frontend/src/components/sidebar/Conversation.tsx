@@ -1,3 +1,4 @@
+import useConversation from "../../hooks/zustand/useConversation";
 import { ConversationType } from "../../types/conversation";
 
 const Conversation = ({
@@ -7,9 +8,15 @@ const Conversation = ({
   conversation: ConversationType;
   emoji: string;
 }) => {
+  const { setSelectedConversation, selectedConversation } = useConversation();
+  const isSelected = selectedConversation?.id === conversation.id;
+
   return (
     <>
-      <div className="flex cursor-pointer items-center gap-2 rounded p-2 py-1 hover:bg-sky-500">
+      <div
+        className={`flex cursor-pointer items-center gap-2 rounded p-2 py-1 hover:bg-sky-500 ${isSelected ? "bg-sky-500" : ""}`}
+        onClick={() => setSelectedConversation(conversation)}
+      >
         <div className="avatar online">
           <div className="w-12 rounded-full">
             <img src={conversation.profilePic} alt="#" />
