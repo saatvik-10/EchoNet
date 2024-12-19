@@ -84,6 +84,7 @@ export class Message {
       });
 
       if (!conversation) {
+        console.log("Conversation not found!")
         return ctx.json({ err: 'No conversation found' }, 404);
       }
 
