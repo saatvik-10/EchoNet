@@ -24,9 +24,12 @@ const MessageInput = () => {
           value={msg}
           onChange={(e) => setMsg(e.target.value)}
         />
-        <button type="submit">
+        <button
+          type="submit"
+          className="flex items-center justify-center rounded-full text-center"
+        >
           {loading ? (
-            <span className="loading loading-spinner" />
+            <span className="loading loading-spinner size-5"></span>
           ) : (
             <LuSend className="size-5" />
           )}
