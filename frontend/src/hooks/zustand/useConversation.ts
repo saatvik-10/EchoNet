@@ -13,7 +13,7 @@ const useConversation = create<UserConversationProps>((set) => ({
   setSelectedConversation: (conversation) =>
     set({ selectedConversation: conversation }),
   messages: [],
-  setMessages: (messages) => set({ messages }),
+  setMessages: (messages) => set({ messages: messages }),
 }));
 
 export default useConversation;

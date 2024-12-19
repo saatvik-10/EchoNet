@@ -16,6 +16,7 @@ const useGetMsgs = () => {
         const data = await res.json();
         if (!res.ok) throw new Error(data.err);
         setMessages(data);
+        console.log(data);
       } catch (err: any) {
         toast.error(err.message);
       } finally {

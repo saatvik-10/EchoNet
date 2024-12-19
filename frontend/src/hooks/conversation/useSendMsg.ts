@@ -6,7 +6,7 @@ const useSendMsg = () => {
   const [loading, setLoading] = useState(false);
   const { messages, setMessages, selectedConversation } = useConversation();
 
-  const sendMsg = async (msg: string) => {
+  const sendMsg = async (message: string) => {
     if (!selectedConversation) return;
     setLoading(true);
     try {
@@ -15,7 +15,7 @@ const useSendMsg = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ msg }),
+        body: JSON.stringify({ message }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.err);
