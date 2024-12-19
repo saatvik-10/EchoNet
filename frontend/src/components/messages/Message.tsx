@@ -1,7 +1,7 @@
 import { useAuth } from "../../context/AuthContext";
 import useConversation from "../../hooks/zustand/useConversation";
 import { MessageType } from "../../types/conversation";
-import { extractTime } from "../../utils/lib/lib";
+import { extractTime } from "../../lib/utils";
 
 const Message = ({ message }: { message: MessageType }) => {
   const { authUser } = useAuth();

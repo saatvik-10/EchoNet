@@ -1,6 +1,6 @@
 import Conversation from "./Conversation";
 import useGetConversations from "../../hooks/conversation/useGetConversations";
-import { getRandomEmoji } from "../../utils/emoji";
+import { getRandomEmoji } from "../../lib/emoji";
 
 const Conversations: React.FC = () => {
   const { loading, conversations } = useGetConversations();
