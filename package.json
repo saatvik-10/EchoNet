@@ -5,7 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "dev": "nodemon --watch backend/src --exec ts-node backend/src/index.ts",
-    "build": "tsc"
+    "build": "tsc && pnpm install && prisma generate --schema./backend/prisma/schema.prisma && pnpm install --prefix frontend && pnpm",
+    "start": "node backend/dist/src/index.js"
   },
   "keywords": [],
   "author": "",

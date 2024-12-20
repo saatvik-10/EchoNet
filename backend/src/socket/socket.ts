@@ -1,7 +1,7 @@
 import { Server } from 'socket.io';
 import { Hono } from 'hono';
-import { cors } from 'hono/cors';
 import { createAdaptorServer } from '@hono/node-server';
+// import { cors } from 'hono/cors';
 
 const app = new Hono();
 
