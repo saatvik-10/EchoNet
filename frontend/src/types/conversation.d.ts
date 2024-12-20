@@ -9,4 +9,5 @@ export type MessageType = {
   senderId: string;
   body: string;
   createdAt: string;
+  shouldShake?: boolean;
 };
