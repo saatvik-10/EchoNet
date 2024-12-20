@@ -32,9 +32,6 @@ importers:
       socket.io:
         specifier: ^4.8.1
         version: 4.8.1
-      tsc:
-        specifier: ^2.0.4
-        version: 2.0.4
     devDependencies:
       '@types/bcryptjs':
         specifier: ^2.4.6
@@ -449,10 +446,6 @@ packages:
 
   tsc-alias@1.8.10:
     resolution: {integrity: sha512-Ibv4KAWfFkFdKJxnWfVtdOmB0Zi1RJVxcbPGiCDsFpCQSsmpWyuzHG3rQyI5YkobWwxFPEyQfu1hdo4qLG2zPw==}
-    hasBin: true
-
-  tsc@2.0.4:
-    resolution: {integrity: sha512-fzoSieZI5KKJVBYGvwbVZs/J5za84f2lSTLPYf6AGiIf43tZ3GNrI1QzTLcjtyDDP4aLxd46RTZq1nQxe7+k5Q==}
     hasBin: true
 
   tsconfig-paths@4.2.0:
@@ -877,8 +870,6 @@ snapshots:
       mylas: 2.1.13
       normalize-path: 3.0.0
       plimit-lit: 1.6.1
-
-  tsc@2.0.4: {}
 
   tsconfig-paths@4.2.0:
     dependencies:
