@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "dev": "nodemon --watch backend/src --exec ts-node backend/src/index.ts"
+    "dev": "nodemon --watch backend/src --exec ts-node backend/src/index.ts",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
