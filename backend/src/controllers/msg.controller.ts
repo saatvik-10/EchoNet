@@ -1,5 +1,8 @@
 import { Context } from 'hono';
 import prisma from '../db/prisma';
+import { getReceiverSocketId } from '../socket/socket';
+import { io } from '../socket/socket';
+
 export class Message {
   async sendMsg(ctx: Context): Promise<Response> {
     try {
@@ -54,7 +57,11 @@ export class Message {
         });
       }
 
-      //socket.io will go here later
+      //socket.io
+      const receiverSocketId = getReceiverSocketId(receiverId);
+      if (receiverSocketId) {
+        io.to(receiverSocketId).emit('newMsg', newMsg);
+      }
 
       return ctx.json(newMsg, 200);
     } catch (err) {
@@ -84,7 +91,7 @@ export class Message {
       });
 
       if (!conversation) {
-        console.log("Conversation not found!")
+        console.log('Conversation not found!');
         return ctx.json({ err: 'No conversation found' }, 404);
       }
 
