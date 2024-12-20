@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import useGetMsgs from "../../hooks/conversation/useGetMsgs";
+import useListenMsg from "../../hooks/conversation/useListenMsg";
 import MessageSkeleton from "../skeletons/MessageSkeleton";
 import Message from "./Message";
 
 const Messages = () => {
   const { loading, messages } = useGetMsgs();
   const [showSkeleton, setShowSkeleton] = useState(true);
+
+  useListenMsg();
 
   useEffect(() => {
     const timer = setTimeout(() => {
