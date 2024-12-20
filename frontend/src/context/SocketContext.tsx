@@ -9,6 +9,7 @@ interface ISocketContext {
 
 const SocketContext = createContext<ISocketContext | undefined>(undefined);
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useSocket = (): ISocketContext => {
   const context = useContext(SocketContext);
   if (context === undefined) {
