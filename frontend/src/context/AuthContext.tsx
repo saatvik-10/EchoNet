@@ -7,7 +7,7 @@ import {
   useState,
 } from "react";
 import { AuthUserType } from "../types/user";
-import { toast } from "react-hot-toast";
+// import { toast } from "react-hot-toast";
 
 const AuthContext = createContext<{
   authUser: AuthUserType | null;
@@ -37,7 +37,8 @@ export const AuthContextProvider = ({
         }
         setAuthUser(data);
       } catch (err: any) {
-        toast.error(err.message);
+        //toast.error(err.message);
+        console.log(err.message)
       } finally {
         setIsLoading(false);
       }
