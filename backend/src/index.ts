@@ -10,15 +10,15 @@ const PORT = process.env.PORT || 5000;
 app.route('/api/auth', authRoutes); //for signin and signup
 app.route('/api/messages', msgRoutes); //for posting and getting msg
 
-if (process.env.NODE_ENV === 'production') {
-  const staticPath = path.join(__dirname, '/frontend/dist');
+// if (process.env.NODE_ENV === 'production') {
+//   const staticPath = path.join(__dirname, '/frontend/dist');
 
-  // Serve static files from the frontend/dist directory
-  app.use('/*', serveStatic({ root: staticPath }));
+//   // Serve static files from the frontend/dist directory
+//   app.use('/*', serveStatic({ root: staticPath }));
 
-  // Catch-all route to serve index.html for client-side routing
-  app.get('*', (c) => c.html(path.join(staticPath, 'index.html')));
-}
+//   // Catch-all route to serve index.html for client-side routing
+//   app.get('*', (c) => c.html(path.join(staticPath, 'index.html')));
+// }
 
 // Start listening
 server.listen(PORT, () => {
