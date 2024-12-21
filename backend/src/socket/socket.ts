@@ -1,18 +1,8 @@
 import { Server } from 'socket.io';
 import { Hono } from 'hono';
 import { createAdaptorServer } from '@hono/node-server';
-// import { cors } from 'hono/cors';
 
 const app = new Hono();
-
-// Apply CORS middleware
-// app.use(
-//   '/*',
-//   cors({
-//     origin: ['http://localhost:5173'],
-//     allowMethods: ['GET', 'POST'],
-//   })
-// );
 
 // Create server using Hono's adaptor
 const server = createAdaptorServer(app);

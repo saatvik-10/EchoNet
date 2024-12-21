@@ -11,7 +11,7 @@ app.route('/api/auth', authRoutes); //for signin and signup
 app.route('/api/messages', msgRoutes); //for posting and getting msg
 
 if (process.env.NODE_ENV === 'production') {
-  const staticPath = path.join(__dirname, '../../frontend/dist');
+  const staticPath = path.join(__dirname, '/frontend/dist');
 
   // Serve static files from the frontend/dist directory
   app.use('/*', serveStatic({ root: staticPath }));
