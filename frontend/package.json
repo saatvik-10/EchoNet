@@ -1,13 +1,12 @@
 {
-  "name": "frontend",
+  "name": "echonet-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build": "tsc && vite build",
+    "start": "vite preview"
   },
   "dependencies": {
     "prettier-plugin-tailwindcss": "^0.6.9",

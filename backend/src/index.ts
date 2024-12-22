@@ -1,9 +1,10 @@
-import 'dotenv/config';
+import {config} from 'dotenv';
+import {resolve} from 'path';
 import authRoutes from './routes/auth.route';
 import msgRoutes from './routes/msg.route';
 import { app, server } from './socket/socket';
-import path from 'path';
-import { serveStatic } from '@hono/node-server/serve-static';
+
+config({ path: resolve(__dirname, '../.env') })
 
 const PORT = process.env.PORT || 5000;
 
