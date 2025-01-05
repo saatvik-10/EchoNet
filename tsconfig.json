@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "moduleResolution": "Node",
+    "outDir": "./backend/dist",
+    "rootDir": "./backend",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    // "forceConsistentCasingInFileNames": true
+  },
+  "include": ["backend/src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts", "frontend"]
+}
